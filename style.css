@@ -1,0 +1,41 @@
+.popflow-effect span {
+  display: inline-block;
+  animation: popflow 1s ease-in-out infinite alternate;
+}
+
+.popflow-effect span:nth-child(odd) {
+  animation-delay: 0.1s;
+}
+
+.popflow-effect span:nth-child(even) {
+  animation-delay: 0.3s;
+}
+
+@keyframes popflow {
+  0% {
+    transform: scale(1) translateY(0);
+    text-shadow: 0 0 5px #00ffff;
+  }
+  50% {
+    transform: scale(1.2) translateY(-5px);
+    text-shadow: 0 0 15px #00ffff, 0 0 5px #00ffff;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    text-shadow: 0 0 5px #00ffff;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+#side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  background: #111;
+  color: #fff;
+  padding: 20px;
+}
