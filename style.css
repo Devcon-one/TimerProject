@@ -1,37 +1,22 @@
-/*==================== Body  ===============*/
-
+/*   HTML STYLING   */
+/*========================= BODY =====================*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family:'Montserrat', 'sans-serif';
-  background-image: url(images/wallpaperUpdated.jpg);
+  font-family: "Lato", sans-serif;
+  background-image: url(images/bgimagetwo.png);
   background-repeat: repeat;
-  background-size: cover;
-  color: #f1f1f1;
+  background-size: cover; 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-
-
-
-
-#HomePage-Text{
-  font-family: 'Montserrat', 'sans-serif';
-  color: #f1f1f1;
-  margin: 0 auto;
-  padding: 4px;
-  border-radius: 4;
-  margin-top: 200px;
-  margin-left: 500px;
-  width: 50%;
-  
-
-}
-
-#body-paragraph{
-  text-align: center;
-}
-
-
-
 
 
 .BodyText{
@@ -42,39 +27,34 @@ body {
   font-size: x-large;
 }
 
+#HomePage-Text{
+  color: #fdf1f1;
+  margin: auto ;
+  width: 50%;
+  margin-top: 200px;
+  margin-bottom: 300px;
+  padding-left: 20px;
+  padding-right: 20px;
+ font-family: 'Montserrat', 'sans-seriff';
+}
+
 @keyframes riseUp {
   to {
     opacity: 1;
     transform: translateY(0);
   }
-
 }
 
-/*==================== vv Body AZ-204 vv ===============*/
-#AZ-204-Title{
-  text-decoration: underline;
+.partition {
+  margin-top: 90px;
 }
-
-.Information {
-  width: 50%;
-  padding: 10px 10px 10px;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: riseUp 1s ease-out forwards;
-  text-align: center;
-  font-size: x-large;
-}
-
-.Azure-Info{
-text-align: center;
-}
-
-/*==================== MENU ===============*/
+/*========================= MENU =====================*/
 .nav-head, .closebtn {
     display: inline;
     color: white;
     padding: 10px;
 }
+
 
 .sidenav {
   height: 100%;
@@ -83,11 +63,11 @@ text-align: center;
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111111f8;
+  background-color: #111;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
-  color: rgb(255, 255, 255);
+  color: white;
   font-weight: bold;
 }
 
@@ -116,15 +96,25 @@ text-align: center;
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+/*========================= NAV_BAR =====================*/
+.navbar {
+  position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 500;
+    padding-right: 21px;
+}
 
-
-/*=============== NAVIGATION ================*/
 nav {
     display: inline;
     background-color: black;
     padding-right: 100%;
     padding-top: 20px;
     padding-bottom: 8px;
+}
+
+.nav-link {
+  font-weight: bold;
 }
 
 nav ul li {
@@ -140,38 +130,56 @@ nav ul {
 }
 
 #navbarSupportedContent {
-    margin-left: 920px;
-}
-
-li a{
-    text-decoration: none;
-    display: inline;
-    color: rgb(238, 231, 231);
-    font-weight: bold;
+    margin-left: 832px;
 }
 
 ul {
     display: inline;
 }
 
-.nav-link{
-  text-wrap: balance;
-}
-
-/*===============Footer==============*/
+/*========================= Footer =====================*/
 .footer{
   color: #fdf1f1;
-  position:absolute;
+  position:flexible;
   bottom: 0;
   text-align: center;
   width: 100%;
   z-index: 500;
-  font-size: larger;
-
+  font-size: medium;
+  font-family: 'Montserrat', 'sans-serif';
+  margin-top: auto;
 }
 
-.footer > a {
-  text-decoration: none;
+.footer > a{
   color: #f1f1f1;
+  text-decoration: none;
 }
 
+/*   JS STYLING   */
+.details {
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-bottom: 90px;
+}
+
+.eff-head {
+  text-align: center;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  margin-top: 30px;
+  text-decoration: underline;
+}
+
+.eff-para {
+  padding: 5px;
+  text-align: center;
+  color: white;
+  margin-top: 10px;
+}
+
+ol li {
+  color: white;
+  margin-top: 10px;
+  list-style-type: circle;
+}

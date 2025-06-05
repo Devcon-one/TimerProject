@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pomodoro Timer</title>
-  <link rel="icon" type="image" href="images/Designer.png">
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-image: url(images/wallpaperUpdated.jpg);
+      background-image: url('backgroundpomodoro.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -23,16 +22,17 @@
 
     .overlay {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background-color: rgba(0, 0, 0, 0.4);
       z-index: 0;
     }
 
-    h1, #timer, .buttons, #statusMessage {
+    h1, #timer, .buttons {
       position: relative;
       z-index: 1;
-      user-select: none;
     }
 
     h1 {
@@ -44,13 +44,11 @@
       font-size: 64px;
       font-weight: bold;
       color: #ffffff;
-      background-color: rgba(30, 58, 138, 0.7);
+      background-color: rgba(52, 11, 109, 0.984);
       padding: 20px 40px;
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
       margin-bottom: 20px;
-      min-width: 200px;
-      text-align: center;
     }
 
     .buttons {
@@ -65,30 +63,14 @@
       font-size: 16px;
       border: none;
       border-radius: 8px;
-      background-color: rgba(30, 58, 138, 0.7);
+      background-color: #3c1a85;
       color: white;
       cursor: pointer;
       transition: background-color 0.2s ease;
     }
 
-    button:hover:not(:disabled) {
-      background-color: #2563EB;
-    }
-
-    button:disabled {
-      background-color: rgba(100, 100, 100, 0.6);
-      cursor: not-allowed;
-    }
-
-    #statusMessage {
-      color: white;
-      font-size: 32px;
-      font-weight: bold;
-      margin-top: 20px;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-      min-height: 44px; /* to prevent layout jump when empty */
-      text-align: center;
-      user-select: none;
+    button:hover {
+      background-color: #6227e1;
     }
   </style>
 </head>
@@ -100,25 +82,16 @@
   <div id="timer">25:00</div>
 
   <div class="buttons">
-    <button id="subtractBtn" onclick="subtractFiveMinutes()">-5 Minutes</button>
+    <button onclick="subtractFiveMinutes()">-5 Minutes</button>
     <button id="startBtn" onclick="startTimer()">Start</button>
     <button onclick="addFiveMinutes()">+5 Minutes</button>
   </div>
 
-  <p id="statusMessage"></p>
-
   <script>
-    const MINIMUM_TIME = 25 * 60;
-    const BREAK_TIME = 5 * 60;
-
+    const MINIMUM_TIME = 25 * 60; // 25 minutes in seconds
     let countdownTime = MINIMUM_TIME;
     let timerInterval = null;
-    let isBreak = false;
-
     const timerDisplay = document.getElementById("timer");
-    const startBtn = document.getElementById("startBtn");
-    const subtractBtn = document.getElementById("subtractBtn");
-    const statusMessage = document.getElementById("statusMessage");
 
     function updateTimerDisplay() {
       const hours = Math.floor(countdownTime / 3600);
@@ -126,9 +99,11 @@
       const seconds = countdownTime % 60;
 
       if (hours > 0) {
+        // Show HH:MM:SS
         timerDisplay.textContent =
           `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
       } else {
+        // Show MM:SS
         timerDisplay.textContent =
           `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
       }
@@ -154,34 +129,14 @@
         updateTimerDisplay();
       } else {
         clearInterval(timerInterval);
-        timerInterval = null;
-
-        if (!isBreak) {
-          // Focus session finished → start break
-          isBreak = true;
-          countdownTime = BREAK_TIME;
-          updateTimerDisplay();
-          statusMessage.textContent = "Take a break!";
-          timerInterval = setInterval(countdown, 1000);
-        } else {
-          // Break finished → reset timer
-          isBreak = false;
-          countdownTime = MINIMUM_TIME;
-          updateTimerDisplay();
-          startBtn.style.display = "inline-block";
-          subtractBtn.disabled = false;
-          statusMessage.textContent = "";
-          timerInterval = null;
-        }
+        timerDisplay.textContent = "TIME'S UP!";
       }
     }
 
     function startTimer() {
       if (timerInterval === null) {
         timerInterval = setInterval(countdown, 1000);
-        startBtn.style.display = "none";
-        subtractBtn.disabled = true;
-        statusMessage.textContent = "Time to focus!";
+        document.getElementById("startBtn").style.display = "none";
       }
     }
 
